@@ -51,12 +51,18 @@ export function Pagination({
         <strong>0</strong> - <strong>10</strong> de <strong>100</strong>
       </Box>
       <Stack direction="row" spacing="2">
-        {currentPage > 1 + siblingsCount && <PaginationItem pageNumber={1} />}
+        {currentPage > 1 + siblingsCount && (
+          <PaginationItem onPageChange={onPageChange} pageNumber={1} />
+        )}
 
         {previousPages.length > 0 &&
           previousPages.map((page) => (
             <>
-              <PaginationItem key={page} pageNumber={page} />
+              <PaginationItem
+                onPageChange={onPageChange}
+                key={page}
+                pageNumber={page}
+              />
               {currentPage > 2 + siblingsCount && (
                 <Text color="gray.300" width="8" textAlign="center">
                   ...
@@ -65,12 +71,20 @@ export function Pagination({
             </>
           ))}
 
-        <PaginationItem pageNumber={currentPage} isCurrent />
+        <PaginationItem
+          onPageChange={onPageChange}
+          pageNumber={currentPage}
+          isCurrent
+        />
 
         {nextPages.length > 0 &&
           nextPages.map((page) => (
             <>
-              <PaginationItem key={page} pageNumber={page} />
+              <PaginationItem
+                onPageChange={onPageChange}
+                key={page}
+                pageNumber={page}
+              />
               {currentPage + 1 + siblingsCount < lastPage && (
                 <Text color="gray.300" width="8" textAlign="center">
                   ...
@@ -80,7 +94,7 @@ export function Pagination({
           ))}
 
         {currentPage + siblingsCount < lastPage && (
-          <PaginationItem pageNumber={lastPage} />
+          <PaginationItem onPageChange={onPageChange} pageNumber={lastPage} />
         )}
       </Stack>
     </Stack>
