@@ -1,4 +1,5 @@
 import { Flex, SimpleGrid, Box, Text, theme } from '@chakra-ui/react';
+import { ApexOptions } from 'apexcharts';
 import dynamic from 'next/dynamic';
 
 import { Header } from '../components/Header';
@@ -8,7 +9,7 @@ const Chart = dynamic(() => import('react-apexcharts'), {
   ssr: false,
 });
 
-const options = {
+const options: ApexOptions = {
   chart: {
     toolbar: {
       show: false,
@@ -36,13 +37,13 @@ const options = {
       color: theme.colors.gray[600],
     },
     categories: [
-      '2021-08-18T00:00:00.000Z',
-      '2021-08-19T00:00:00.000Z',
-      '2021-08-20T00:00:00.000Z',
-      '2021-08-21T00:00:00.000Z',
-      '2021-08-22T00:00:00.000Z',
-      '2021-08-23T00:00:00.000Z',
-      '2021-08-24T00:00:00.000Z',
+      new Date('2021-08-18T00:00:00.000Z'),
+      new Date('2021-08-19T00:00:00.000Z'),
+      new Date('2021-08-20T00:00:00.000Z'),
+      new Date('2021-08-21T00:00:00.000Z'),
+      new Date('2021-08-22T00:00:00.000Z'),
+      new Date('2021-08-23T00:00:00.000Z'),
+      new Date('2021-08-24T00:00:00.000Z'),
     ],
   },
   fill: {
